@@ -1,0 +1,9 @@
+export typeOf := (value: unknown): string =>
+  return String value if value == null
+
+  const tag = Reflect.apply Object.prototype.toString, value, []
+  const {name} = value.constructor
+
+  return name is "Object" ? tag.slice 8, -1 : name
+
+export default typeOf
