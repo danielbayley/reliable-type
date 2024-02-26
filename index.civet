@@ -4,6 +4,12 @@ export typeOf := (value: unknown): string =>
   const tag = Reflect.apply Object.prototype.toString, value, []
   const {name} = value.constructor
 
-  return name is "Object" ? tag.slice 8, -1 : name
+  switch name
+    when "Number"
+      Number.isNaN(value)    ? "NaN" :
+      Number.isFinite(value) ?  name : "Infinity"
+
+    when "Object" then tag.slice 8, -1
+    else name
 
 export default typeOf
