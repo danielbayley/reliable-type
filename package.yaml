@@ -1,0 +1,35 @@
+# https://docs.npmjs.com/cli/configuring-npm/package-json
+$schema: https://json.schemastore.org/package
+version: 0.0.0
+name: reliable-type
+description: Reliable runtime type information.
+keywords:
+- type
+- check
+
+homepage: https://github.com/danielbayley/reliable-type#readme
+repository: danielbayley/reliable-type
+bugs:     https://github.com/danielbayley/reliable-type/issues
+author:
+  name: Daniel Bayley
+  email: daniel.bayley@me.com
+  url: danielbayley.dev
+license: MIT
+
+type: module
+exports: &index ./index.js
+files:  [*index]
+
+engines:
+  node: ">=22"
+packageManager: pnpm@9.6.0
+devDependencies:
+  "@danielx/civet": ^0.7.19
+  typescript: ^5.5.4
+
+scripts:
+  test:     civet --typecheck   **.civet
+  prepare:  civet --compile --js *.civet --output $npm_package_exports
+  prebuild: node --run clean
+  build:    node --run prepare
+  clean:    rm -f *.js?(on)
