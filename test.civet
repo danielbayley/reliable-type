@@ -1,0 +1,78 @@
+"civet auto-const coffee-do"
+import assert from "node:assert/strict"
+import { describe, it } from "node:test"
+import { typeOf } from "./index.civet"
+
+string    = "string"
+{length} = string
+array     = Array.from {length}, (_, i) => i + 1
+object    = Object.assign {length}
+entries   = Object.entries object
+promise   = Promise.resolve true
+
+describe "typeOf", =>
+  it "should return the correct type for primitive values", =>
+    assert.equal "null",       typeOf null
+    assert.equal "undefined",  typeOf undefined
+    assert.equal "Boolean",    typeOf true
+    assert.equal "Boolean",    typeOf false
+    assert.equal "String",     typeOf string
+    assert.equal "String",     typeOf ""
+    assert.equal "Number",     typeOf -0
+    assert.equal "Number",     typeOf 2
+    assert.equal "Number",     typeOf 0.1
+    assert.equal "Number",     typeOf 0xAf
+    assert.equal "Number",     typeOf 0o1
+    assert.equal "Number",     typeOf 0b1
+    assert.equal "BigInt",     typeOf 0n
+    assert.equal "BigInt",     typeOf 1_000_000n
+    assert.equal "Number",     typeOf Math.PI
+    assert.equal "Number",     typeOf 3.1415e+1
+    assert.equal "Infinity",   typeOf -Infinity
+    assert.equal "NaN",        typeOf NaN
+    assert.equal "NaN",        typeOf 0 / 0
+    assert.equal "Symbol",     typeOf Symbol("*")
+
+  it "should return the correct respective type for objects", =>
+    assert.equal "Array",      typeOf []
+    assert.equal "Array",      typeOf array
+    assert.equal "Array",      typeOf Array.from string
+    assert.equal "Uint8Array", typeOf new Uint8Array array
+    assert.equal "Set",        typeOf new Set array
+    assert.equal "WeakSet",    typeOf new WeakSet()
+    assert.equal "WeakMap",    typeOf new WeakMap()
+    assert.equal "Map",        typeOf new Map entries
+    assert.equal "Object",     typeOf object
+    assert.equal "Object",     typeOf {}
+
+  it "should return the name of built-in globals, and tagged objects", =>
+    assert.equal "JSON",       typeOf JSON
+    assert.equal "Math",       typeOf Math
+    assert.equal "tag",        typeOf { [Symbol.toStringTag]: "tag" }
+
+  it "should return the correct respective type for other objects", =>
+    assert.equal "RegExp",     typeOf new RegExp ".*"
+    assert.equal "RegExp",     typeOf /.*/g
+    assert.equal "Segmenter",  typeOf new Intl.Segmenter()
+    assert.equal "URL",        typeOf new URL "https://github.com"
+    assert.equal "Buffer",     typeOf Buffer.from string
+    assert.equal "Date",       typeOf new Date
+
+  it "should return the correct respective type for functions", =>
+    assert.equal "Promise",                typeOf promise
+    assert.equal "Arguments",              typeOf do -> arguments
+
+    assert.equal "Function",               typeOf =>
+    assert.equal "Function",               typeOf ->
+    assert.equal "Function",               typeOf [].reduce
+    assert.equal "AsyncFunction",          typeOf => await promise
+
+    assert.equal "GeneratorFunction",      typeOf    -> yield * array
+    assert.equal "Generator",              typeOf do -> yield * array
+    assert.equal "AsyncGeneratorFunction", typeOf    -> yield * await array
+    assert.equal "AsyncGenerator",         typeOf do -> yield * await array
+
+  it "should return the name of classes", =>
+    class Class
+    assert.equal "Class",    typeOf new Class
+    assert.equal "Extended", typeOf new class Extended extends Class

@@ -28,8 +28,9 @@ devDependencies:
   typescript: ^5.5.4
 
 scripts:
-  test:     civet --typecheck   **.civet
-  prepare:  civet --compile --js *.civet --output $npm_package_exports
-  prebuild: node --run clean
-  build:    node --run prepare
-  clean:    rm -f *.js?(on)
+  lint.types: civet --typecheck *.civet
+  test:       node  --run lint.types && civet test.civet
+  prepare:    civet --compile --js *.civet --output $npm_package_exports
+  prebuild:   node  --run clean
+  build:      node  --run prepare
+  clean:      rm -f *.js?(on)
