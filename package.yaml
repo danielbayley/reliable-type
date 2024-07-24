@@ -22,15 +22,20 @@ files:  [*index]
 
 engines:
   node: ">=22"
+  pnpm: ">=9"
 packageManager: pnpm@9.6.0
 devDependencies:
   "@danielx/civet": ^0.7.19
+  "@types/node": ^20.14.12
   typescript: ^5.5.4
+  yaml: ^2.5.0
 
 scripts:
   lint.types: civet --typecheck *.civet
-  test:       node  --run lint.types && civet test.civet
-  prepare:    civet --compile --js *.civet --output $npm_package_exports
+  pretest:    node  --run lint.types
+  test:       node  --import @danielx/civet/register --test test.civet
+  package:    yaml  --single --json --indent 2 < package.yaml > package.json
+  prepare:    pnpm package && civet --compile --js *.civet --output $npm_package_exports
   prebuild:   node  --run clean
   build:      node  --run prepare
   clean:      rm -f *.js?(on)
