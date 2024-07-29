@@ -10,7 +10,7 @@ object    = Object.assign {length}
 entries   = Object.entries object
 promise   = Promise.resolve true
 
-describe "typeOf", =>
+describe "`typeOf`", =>
   it "should return the correct type for primitive values", =>
     assert.equal "null",       typeOf null
     assert.equal "undefined",  typeOf undefined

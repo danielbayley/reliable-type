@@ -8,4 +8,7 @@ jobs:
   CI:
     uses: danielbayley/npm-package-ci/.github/workflows/ci.yml@main
     with:
-      node-version: 22
+      node-version: 22 #, "latest"
+      #test-reporter: node-test-github-reporter #"@reporters/github" #false
+      #test-coverage: TODO
+      #annotate-todo: false
