@@ -1,0 +1,65 @@
+# https://docs.npmjs.com/cli/configuring-npm/package-json
+$schema: https://json.schemastore.org/package
+version: 0.0.0
+name: reliable-type
+description: Reliable runtime type information.
+keywords:
+- type
+- check
+
+homepage: https://github.com/danielbayley/reliable-type#readme
+repository: danielbayley/reliable-type
+bugs: https://github.com/danielbayley/reliable-type/issues
+
+author:
+  name: Daniel Bayley
+  email: daniel.bayley@me.com
+  url: danielbayley.dev
+
+funding: https://github.com/danielbayley/reliable-type?sponsor=1
+license: MIT
+
+type: module
+exports: &index ./index.js
+files: [*index]
+publishConfig:
+  access: public
+
+engines:
+  node: &node-version ">=22"
+  pnpm: &pnpm-version ">=10"
+devEngines:
+  runtime:
+    name: node
+    version: *node-version
+  packageManager:
+    name: pnpm
+    version: *pnpm-version
+packageManager: pnpm@10.13.1
+
+devDependencies:
+  publint: ^0.3.12
+  yaml: ^2.8.0
+
+scripts:
+  prepare: yaml --single --json --indent ${TABSIZE:-2} < package.yaml > package.json
+  
+  test: node --experimental-test-coverage --test test.js
+
+  prerelease: git stash --include-untracked --keep-index && pnpm prepare
+  release: pnpm version --force --no-git-tag-version
+  postrelease: pnpm publish
+
+  prepublishOnly: publint
+  postpublish: git stash pop --quiet
+
+  version: >-
+    sed -i "" -E "s/^(version: *)$npm_old_version\$/\\1$npm_new_version/" package.yaml &&
+    git commit --message  $npm_new_version package.yaml &&
+    git tag    --annotate $npm_new_version --message v$npm_new_version &&
+    git push   --follow-tags
+
+  watch: node --experimental-test-coverage --test --watch test.js
+  clean: git clean -X --force
+  zap: pnpm clean && rm -rf node_modules || true
+  reinstall: pnpm zap && pnpm install
