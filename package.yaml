@@ -26,7 +26,7 @@ publishConfig:
   access: public
 
 engines:
-  node: &node-version ">=22"
+  node: &node-version ">=20"
   pnpm: &pnpm-version ">=10"
 devEngines:
   runtime:
