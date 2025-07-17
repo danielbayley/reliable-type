@@ -1,0 +1,9 @@
+name: CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  CI:
+    uses: danielbayley/npm-package-ci/.github/workflows/ci.yaml@main
