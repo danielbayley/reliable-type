@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { describe, it } from "node:test"
-import { type, typeOf, tag, types } from "reliable-type"
+import { type, typeOf, tag, toStringTag, types } from "reliable-type"
 import * as fixtures from "#fixtures"
 
 const {
@@ -129,6 +129,9 @@ describe("`type`", () => {
 })
 
 describe("`tag`", () => {
+  it("`export`s a `toStringTag` alias", () =>
+    assert.equal(toStringTag(true), "Boolean"))
+
   it("`return`s correct `tag` for primitives", () => {
     assert.equal("null",      tag(null))
     assert.equal("undefined", tag(undefined))

@@ -2,6 +2,7 @@ import {isProxy} from "#utils"
 import {types} from "#types"
 export {types}
 
+export const toStringTag = tag
 export function tag(value) {
   if (value == null) return String(value)
 
