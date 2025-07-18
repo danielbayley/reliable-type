@@ -11,3 +11,4 @@ export function type(value) {
     default: return name
   }
 }
+export const typeOf = type

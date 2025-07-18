@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { describe, it } from "node:test"
-import { type } from "reliable-type"
+import { type, typeOf } from "reliable-type"
 
 const string   = "string"
 const {length} = string
@@ -10,6 +10,9 @@ const entries  = Object.entries(object)
 const promise  = Promise.resolve(true)
 
 describe("`type`", () => {
+  it("`export`s a `typeOf` alias", () =>
+    assert.equal(typeOf(true), "Boolean"))
+
   it("should `return` the correct `type` for primitive values", () => {
     assert.equal("null",      type(null))
     assert.equal("undefined", type(undefined))
