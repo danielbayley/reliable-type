@@ -1,8 +1,19 @@
-export default type
-export function type(value) {
+import {types} from "#types"
+export {types}
+
+export function tag(value) {
   if (value == null) return String(value)
+
+  const {constructor} = value ?? {}
+  const {name} = constructor  ?? {}
+
+  if (constructor === URL) return "URL"
+
+  const string = name && String(constructor)
+  if (string?.includes("extends")) return "ExtendedClass"
+  if (string?.startsWith("class")) return "Class"
+
   const tag = Reflect.apply(Object.prototype.toString, value, [])
-  const {name} = value.constructor ?? {}
   switch (name) {
     case "Number":
       return Number.isNaN(value) ? "NaN" : Number.isFinite(value) ? name : "Infinity"
@@ -11,4 +22,7 @@ export function type(value) {
     default: return name
   }
 }
+
+export const type = value => tag(value) in types ? types[tag(value)] : tag(value)
 export const typeOf = type
+export default type
