@@ -20,7 +20,13 @@ funding: https://github.com/danielbayley/reliable-type?sponsor=1
 license: MIT
 
 type: module
-exports: &index ./index.js
+imports:
+  "#types": &types ./lib/types.js
+  "#fixtures": ./test/fixtures.js
+  "#utils": ./lib/utils.js
+exports:
+  .: &index ./index.js
+  ./types: *types
 files: [*index]
 publishConfig:
   access: public
