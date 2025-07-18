@@ -1,3 +1,4 @@
+import {isProxy} from "#utils"
 import {types} from "#types"
 export {types}
 
@@ -18,7 +19,7 @@ export function tag(value) {
     case "Number":
       return Number.isNaN(value) ? "NaN" : Number.isFinite(value) ? name : "Infinity"
     case "Object":
-    case "": return tag.slice(8, -1)
+    case "": return isProxy(value) ? "Proxy" : tag.slice(8, -1)
     default: return name
   }
 }
