@@ -22,12 +22,16 @@ license: MIT
 type: module
 imports:
   "#types": &types ./lib/types.js
-  "#fixtures": ./test/fixtures.js
-  "#utils": ./lib/utils.js
+  "#fixtures": &fixtures ./test/fixtures.js
+  "#utils": &utils ./lib/utils.js
 exports:
   .: &index ./index.js
   ./types: *types
-files: [*index]
+files:
+- *index
+- *types
+- *fixtures
+- *utils
 publishConfig:
   access: public
 
