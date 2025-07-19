@@ -15,12 +15,18 @@ and [`instanceof`]. While the [`.constructor`] `Object` property is strong
 reassigned. It will always `return` the correct type as an informative,
 specific Type or [`tag`] `String`. Extra [type]s are also available to `import`:
 ~~~ js
-import { type, tag } from "reliable-type"
+import assert from "node:assert/strict"
+import { type, tag,  types } from "reliable-type"
+import { GeneratorFunction } from "reliable-type/types"
 
 function* generator() { yield * [1, 2, 3] }
 
-type(generator) // GeneratorFunction
-tag(generator) // "GeneratorFunction"
+const Type = type(generator)
+const Tag  =  tag(generator)
+
+assert.equal(Type, types.GeneratorFunction)
+assert.equal(Type, GeneratorFunction)
+assert.equal(Tag, "GeneratorFunction")
 ~~~
 
 | Expression                                 | [`type`]                   | [`tag`]                    |
