@@ -1,6 +1,7 @@
 import {isProxy} from "#utils"
 import {types} from "#types"
 export {types}
+export * from "#types"
 
 export const toStringTag = tag
 export function tag(value) {
