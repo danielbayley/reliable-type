@@ -7,13 +7,13 @@ Reliable runtime [type] information.
 pnpm install reliable-type
 ~~~
 
-Usage
------
+Example
+-------
 The provided `type` method is more reliable than some combination of [`typeof`]
-and [`instanceof`]. While the [`.constructor`] `Object` property is strong—and
-recommended, in absence of a dependency like this, or custom `function`—it can
-technically be reassigned. This `type` method will always `return` the correct
-type as an informative, specific `String`:
+and [`instanceof`]. While the [`.constructor`] `Object` property is strong
+—and recommended, in absence of a dependency like this—it can technically be
+reassigned. It will always `return` the correct type as an informative,
+specific Type or [`tag`] `String`. Extra [type]s are also available to `import`:
 ~~~ js
 import { type, tag } from "reliable-type"
 
@@ -23,7 +23,7 @@ type(generator) // GeneratorFunction
 tag(generator) // "GeneratorFunction"
 ~~~
 
-| Expression                                 | [Type]                     | [tag]                      |
+| Expression                                 | [`type`]                   | [`tag`]                    |
 |:-------------------------------------------|:---------------------------|:---------------------------|
 | `null`                                     | `null`                     | `"null"`                   |
 | `undefined`                                | `undefined`                | `"undefined"`              |
@@ -51,7 +51,7 @@ tag(generator) // "GeneratorFunction"
 | `const object = { a: 1, b: 2 }`            | `Object`                   | `"Object"`                 |
 | `new Proxy(object, {})`                    | [`Proxy`]                  | `"Proxy"`                  |
 | `Proxy.revocable(object, {})`              | `Proxy`                    | `"Proxy"`                  |
-| `{ [Symbol.toStringTag]: "tag" }`          | `"tag"`                    | [`"tag"`][tag]             |
+| `{ [Symbol.toStringTag]: "tag" }`          | `"tag"`                    | [`"tag"`][`tag`]           |
 | [`JSON`]                                   | `JSON`                     | `"JSON"`                   |
 | `function() { return arguments }(1, 2)`    | [`Arguments`]              | `"Arguments"`              |
 | `[].reduce`/`() => {}`                     | `Function`                 | `"Function"`               |
@@ -86,7 +86,7 @@ License
 [`Math`]:                     https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math
 
 [`Symbol`]:                   https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol
-[tag]:                        https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
+[`tag`]:                      https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
 [`JSON`]:                     https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON
 [`Segmenter`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 
