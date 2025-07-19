@@ -70,6 +70,11 @@ assert.equal(Tag, "GeneratorFunction")
 | `new (class Class {})()`                   | `Class`                    | [`"Class"`]                |
 | `new (class Extended extends Class {})()`  | `ExtendedClass`            | [`"ExtendedClass"`]        | 
 
+### Aliases
+~~~ js
+import { typeOf, toStringTag } from "reliable-type"
+~~~
+
 License
 -------
 [MIT] © [Daniel Bayley]
