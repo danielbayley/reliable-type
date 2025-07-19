@@ -29,7 +29,7 @@ assert.equal(Type, GeneratorFunction)
 assert.equal(Tag, "GeneratorFunction")
 ~~~
 
-| Expression                                 | [`type`]                   | [`tag`]                    |
+| Expression                                 | [`type`][type]             | [`tag`]                    |
 |:-------------------------------------------|:---------------------------|:---------------------------|
 | `null`                                     | `null`                     | `"null"`                   |
 | `undefined`                                | `undefined`                | `"undefined"`              |
