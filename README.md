@@ -16,7 +16,7 @@ reassigned. It will always `return` the correct type as an informative,
 specific Type or [`tag`] `String`. Extra [type]s are also available to `import`:
 ~~~ js
 import assert from "node:assert/strict"
-import { type, tag,  types } from "reliable-type"
+import { type, types, tag, tags } from "reliable-type"
 import { GeneratorFunction } from "reliable-type/types"
 
 function* generator() { yield * [1, 2, 3] }
@@ -24,9 +24,11 @@ function* generator() { yield * [1, 2, 3] }
 const Type = type(generator)
 const Tag  =  tag(generator)
 
-assert.equal(Type, types.GeneratorFunction)
 assert.equal(Type, GeneratorFunction)
 assert.equal(Tag, "GeneratorFunction")
+
+assert.equal(Type, types.GeneratorFunction)
+assert.equal(Tag,   tags.GeneratorFunction)
 ~~~
 
 | Expression                                 | [`type`][type]             | [`tag`]                    |
