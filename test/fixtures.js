@@ -32,6 +32,8 @@ export const map     = new Map(entries)
 export const weakMap = new WeakMap()
 weakMap.set(object, true)
 
+export const iterator = map.entries()
+
 export const proxy = new Proxy(object, {})
 export const proxyRevocable  = Proxy.revocable(object, {})
 export const argumentsObject = function() { return arguments }(...array)

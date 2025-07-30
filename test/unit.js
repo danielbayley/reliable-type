@@ -25,6 +25,7 @@ const {
   weakSet,
   weakMap,
   map,
+  iterator,
   object,
   proxy,
   proxyRevocable,
@@ -86,6 +87,7 @@ describe("`type`", () => {
     assert.equal(WeakSet,    type(weakSet))
     assert.equal(WeakMap,    type(weakMap))
     assert.equal(Map,        type(map))
+    assert.equal(Iterator,   type(iterator))
     assert.equal(Object,     type(object))
     assert.equal(Object,     type({}))
     assert.equal(Proxy,      type(proxy))
@@ -161,6 +163,7 @@ describe("`tag`", () => {
     assert.equal("WeakSet",    tag(weakSet))
     assert.equal("WeakMap",    tag(weakMap))
     assert.equal("Map",        tag(map))
+    assert.equal("Iterator",   tag(iterator))
     assert.equal("Object",     tag(object))
     assert.equal("Object",     tag({}))
     assert.equal("Proxy",      tag(proxy))
