@@ -31,8 +31,8 @@ assert.equal(Tag, "GeneratorFunction")
 
 | Expression                                 | [`type`][type]             | [`tag`]                    |
 |:-------------------------------------------|:---------------------------|:---------------------------|
-| `null`                                     | `null`                     | `"null"`                   |
 | `undefined`                                | `undefined`                | `"undefined"`              |
+| `null`                                     | `null`                     | `"null"`                   |
 | `true`/`false`                             | `Boolean`                  | `"Boolean"`                |
 | `"string"`                                 | `String`                   | `"String"`                 |
 | `-0`/`1_000`/`0.1`                         | [`Number`]                 | `"Number"`                 | 
