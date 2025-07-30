@@ -53,7 +53,8 @@ assert.equal(Tag, "GeneratorFunction")
 | `new Set([1, 2, 3])`                       | [`Set`]                    | `"Set"`                    |
 | `new WeakSet()`                            | [`WeakSet`]                | `"WeakSet"`                |
 | `new WeakMap()`                            | [`WeakMap`]                | `"WeakMap"`                |
-| `new Map().set("a", 1)`                    | [`Map`]                    | `"Map"`                    |
+| `const map = new Map().set("a", 1)`        | [`Map`]                    | `"Map"`                    |
+| `map.entries()`                            | [`Iterator`]               | `"Iterator"`               |
 | `const object = { a: 1, b: 2 }`            | `Object`                   | `"Object"`                 |
 | `new Proxy(object, {})`                    | [`Proxy`]                  | `"Proxy"`                  |
 | `Proxy.revocable(object, {})`              | `Proxy`                    | `"Proxy"`                  |
@@ -107,6 +108,7 @@ License
 [`WeakSet`]:                  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
 [`WeakMap`]:                  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 [`Map`]:                      https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+[`Iterator`]:                 https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator
 [`Proxy`]:                    https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 [`Arguments`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/arguments
