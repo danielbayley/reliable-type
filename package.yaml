@@ -27,6 +27,7 @@ imports:
 exports:
   .: &index ./index.js
   ./types: *types
+  ./utils: *utils
 files:
 - *index
 - *types
