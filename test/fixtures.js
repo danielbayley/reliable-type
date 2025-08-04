@@ -20,7 +20,8 @@ export const binary = 0b1
 export const url    = new URL("https://github.com")
 export const buffer = Buffer.from(string)
 
-export const readStream  = fs.createReadStream(buffer)
+const { dirname, filename } = import.meta
+export const readStream  = fs.createReadStream(filename)
 export const writeStream = fs.createWriteStream("/dev/null")
 
 export const uint8Array = new Uint8Array([0, 255])
@@ -53,7 +54,6 @@ export const generator = generatorFunction()
 export async function* asyncGeneratorFunction() { return yield * array }
 export const asyncGenerator = asyncGeneratorFunction()
 
-export const {dirname} = import.meta
-export const  dir      = await promises.opendir(dirname)
-export const [dirent]  = await promises.readdir(dirname, { withFileTypes: true })
+export const  dir     = await promises.opendir(dirname)
+export const [dirent] = await promises.readdir(dirname, { withFileTypes: true })
 await dir.close()
