@@ -73,7 +73,7 @@ assert.equal(Tag,   tags.GeneratorFunction)
 | `async function* gen() { yield * [1, 2] }` | [`AsyncGeneratorFunction`] | `"AsyncGeneratorFunction"` |
 | `gen()`                                    | [`AsyncGenerator`]         | `"AsyncGenerator"`         |
 | `new (class Class {})()`                   | `Class`                    | [`"Class"`]                |
-| `new (class Extended extends Class {})()`  | `ExtendedClass`            | [`"ExtendedClass"`]        | 
+| `new (class Extended extends Class {})()`  | `ExtendedClass`            | [`"ExtendedClass"`]        |
 | `fs.opendir(dir)`                          | [`Dir`]                    | `"Dir"`                    |
 | `fs.readdir(dir, { withFileTypes: true })` | [`Dirent`]                 | `"Dirent"`                 |
 
