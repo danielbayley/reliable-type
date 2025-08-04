@@ -49,9 +49,11 @@ assert.equal(Tag,   tags.GeneratorFunction)
 | `new Date()`                               | `Date`                     | `"Date"`                   |
 | `/.*/g`/`new RegExp(".*")`                 | `RegExp`                   | `"RegExp"`                 |
 | `new URL("https://github.com")`            | `URL`                      | `"URL"`                    |
-| `Buffer.from("data")`                      | [`Buffer`]                 | `"Buffer"`                 |
-| `[1 ,2 ,3]`/`Array.from("abc")`            | `Array`                    | `"Array"`                  |
+| `const buffer = Buffer.from("data")`       | [`Buffer`]                 | `"Buffer"`                 |
+| `fs.createReadStream(buffer)`              | [`ReadStream`]             | `"ReadStream"`             |
+| `fs.createWriteStream("/dev/null")`        | [`WriteStream`]            | `"WriteStream"`            |
 | `new Uint8Array([0, 255])`                 | [`Uint8Array`]             | `"Uint8Array"`             |
+| `[1 ,2 ,3]`/`Array.from("abc")`            | `Array`                    | `"Array"`                  |
 | `new Set([1, 2, 3])`                       | [`Set`]                    | `"Set"`                    |
 | `new WeakSet()`                            | [`WeakSet`]                | `"WeakSet"`                |
 | `new WeakMap()`                            | [`WeakMap`]                | `"WeakMap"`                |
@@ -105,6 +107,8 @@ License
 [`Segmenter`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 
 [`Buffer`]:                   https://nodejs.org/api/buffer.html
+[`ReadStream`]:               https://nodejs.org/api/fs.html#class-fsreadstream
+[`WriteStream`]:              https://nodejs.org/api/fs.html#class-fswritestream
 [`Uint8Array`]:               https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
 [`Set`]:                      https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
 [`WeakSet`]:                  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
