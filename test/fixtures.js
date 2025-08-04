@@ -1,4 +1,4 @@
-import fs from "node:fs"
+import fs, {promises} from "node:fs"
 
 export const string = "string"
 export const regex  = RegExp(".*")
@@ -52,3 +52,8 @@ export const generator = generatorFunction()
 
 export async function* asyncGeneratorFunction() { return yield * array }
 export const asyncGenerator = asyncGeneratorFunction()
+
+export const {dirname} = import.meta
+export const  dir      = await promises.opendir(dirname)
+export const [dirent]  = await promises.readdir(dirname, { withFileTypes: true })
+await dir.close()

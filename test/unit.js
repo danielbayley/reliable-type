@@ -39,6 +39,8 @@ const {
   generator,
   asyncGeneratorFunction,
   asyncGenerator,
+  dir,
+  dirent,
 } = fixtures
 
 const {
@@ -53,6 +55,8 @@ const {
   Arguments,
   Class,
   ExtendedClass,
+  Dir,
+  Dirent,
 } = types
 
 class Classy {}
@@ -137,6 +141,11 @@ describe("`type`", () => {
     assert.equal(Class,         type(new Classy))
     assert.equal(ExtendedClass, type(new Extended))
   })
+
+  it("`return`s `Dir`/`ent`ry `type`s for directories accessed by Node", () => {
+    assert.equal(Dir,    type(dir))
+    assert.equal(Dirent, type(dirent))
+  })
 })
 
 describe("`tag`", () => {
@@ -217,5 +226,10 @@ describe("`tag`", () => {
   it("`return`s correct `tag` for `class`es, including `extend`ed", () => {
     assert.equal("Class",         tag(new Classy))
     assert.equal("ExtendedClass", tag(new Extended))
+  })
+
+  it("`return`s `Dir`/`ent`ry `tag`s for directories accessed by Node", () => {
+    assert.equal("Dir",    tag(dir))
+    assert.equal("Dirent", tag(dirent))
   })
 })
