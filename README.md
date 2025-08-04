@@ -74,6 +74,8 @@ assert.equal(Tag,   tags.GeneratorFunction)
 | `gen()`                                    | [`AsyncGenerator`]         | `"AsyncGenerator"`         |
 | `new (class Class {})()`                   | `Class`                    | [`"Class"`]                |
 | `new (class Extended extends Class {})()`  | `ExtendedClass`            | [`"ExtendedClass"`]        | 
+| `fs.opendir(dir)`                          | [`Dir`]                    | `"Dir"`                    |
+| `fs.readdir(dir, { withFileTypes: true })` | [`Dirent`]                 | `"Dirent"`                 |
 
 ### Aliases
 ~~~ js
@@ -127,3 +129,6 @@ License
 
 [`"Class"`]:                  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Classes
 [`"ExtendedClass"`]:          https://developer.mozilla.org/docs/Web/JavaScript/Reference/Classes/extends
+
+[`Dir`]:                      https://nodejs.org/api/fs.html#class-fsdir
+[`Dirent`]:                   https://nodejs.org/api/fs.html#class-fsdirent
