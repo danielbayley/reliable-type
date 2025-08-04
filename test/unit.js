@@ -59,9 +59,6 @@ const {
   Dirent,
 } = types
 
-class Classy {}
-class Extended extends Classy {}
-
 describe("`type`", () => {
   it("`export`s a `typeOf` alias", () =>
     assert.equal(typeOf(true), Boolean))
@@ -138,8 +135,8 @@ describe("`type`", () => {
   })
 
   it("`return`s `Class` `type` for `class`es, including `extend`ed", () => {
-    assert.equal(Class,         type(new Classy))
-    assert.equal(ExtendedClass, type(new Extended))
+    assert.equal(Class,         type(new Class))
+    assert.equal(ExtendedClass, type(new ExtendedClass))
   })
 
   it("`return`s `Dir`/`ent`ry `type`s for directories accessed by Node", () => {
@@ -224,8 +221,8 @@ describe("`tag`", () => {
   })
 
   it("`return`s correct `tag` for `class`es, including `extend`ed", () => {
-    assert.equal("Class",         tag(new Classy))
-    assert.equal("ExtendedClass", tag(new Extended))
+    assert.equal("Class",         tag(new Class))
+    assert.equal("ExtendedClass", tag(new ExtendedClass))
   })
 
   it("`return`s `Dir`/`ent`ry `tag`s for directories accessed by Node", () => {

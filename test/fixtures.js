@@ -31,8 +31,8 @@ export const set     = new Set(array)
 export const weakSet = new WeakSet()
 weakSet.add(array)
 
-export const object = Object.assign({}, string)
-const entries       = Object.entries(object)
+export const object = {...string }
+const entries = Object.entries(object)
 
 export const map     = new Map(entries)
 export const weakMap = new WeakMap()
