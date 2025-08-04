@@ -19,8 +19,10 @@ const {
   binary,
   url,
   buffer,
-  array,
+  readStream,
+  writeStream,
   uint8Array,
+  array,
   set,
   weakSet,
   weakMap,
@@ -40,6 +42,8 @@ const {
 } = fixtures
 
 const {
+  ReadStream,
+  WriteStream,
   Segmenter,
   AsyncFunction,
   AsyncGeneratorFunction,
@@ -107,6 +111,11 @@ describe("`type`", () => {
     assert.equal(URL,       type(url))
     assert.equal(Buffer,    type(buffer))
     assert.equal(Date,      type(date))
+  })
+
+  it("`return`s correct respective `type` for streams", () => {
+    assert.equal(ReadStream,  type(readStream))
+    assert.equal(WriteStream, type(writeStream))
   })
 
   it("`return`s correct respective `type` for `function`s", () => {
@@ -183,6 +192,11 @@ describe("`tag`", () => {
     assert.equal("URL",       tag(url))
     assert.equal("Buffer",    tag(buffer))
     assert.equal("Date",      tag(date))
+  })
+
+  it("`return`s correct respective `tag` for streams", () => {
+    assert.equal("ReadStream",  tag(readStream))
+    assert.equal("WriteStream", tag(writeStream))
   })
 
   it("`return`s correct respective `tag` for `function`s", () => {

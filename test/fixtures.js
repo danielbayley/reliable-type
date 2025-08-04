@@ -1,3 +1,5 @@
+import fs from "node:fs"
+
 export const string = "string"
 export const regex  = RegExp(".*")
 export const symbol = Symbol("*")
@@ -18,8 +20,11 @@ export const binary = 0b1
 export const url    = new URL("https://github.com")
 export const buffer = Buffer.from(string)
 
-export const array  = Array.from(string)
+export const readStream  = fs.createReadStream(buffer)
+export const writeStream = fs.createWriteStream("/dev/null")
+
 export const uint8Array = new Uint8Array([0, 255])
+export const array = Array.from(string)
 
 export const set     = new Set(array)
 export const weakSet = new WeakSet()
