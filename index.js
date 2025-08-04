@@ -10,7 +10,8 @@ export function tag(value) {
   const {constructor} = value ?? {}
   const {name} = constructor  ?? {}
 
-  if (constructor === URL) return "URL"
+  if (constructor === URL)     return "URL"
+  if (name?.startsWith("Dir")) return name
 
   const string = name && String(constructor)
   if (string?.includes("extends")) return "ExtendedClass"
