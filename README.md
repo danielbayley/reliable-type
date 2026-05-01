@@ -48,6 +48,7 @@ assert.equal(Tag,   tags.GeneratorFunction)
 | `new Intl.Segmenter()`                     | [`Segmenter`]              | `"Segmenter"`              |
 | `new Date()`                               | `Date`                     | `"Date"`                   |
 | `/.*/g`/`new RegExp(".*")`                 | `RegExp`                   | `"RegExp"`                 |
+| `new Error("message")`                     | [`Error`]                  | `"Error"`                  |
 | `new URL("https://github.com")`            | `URL`                      | `"URL"`                    |
 | `const buffer = Buffer.from("data")`       | [`Buffer`]                 | `"Buffer"`                 |
 | `new ArrayBuffer(1024)                     | [`ArrayBuffer`]            | `"ArrayBuffer"`            |
@@ -108,6 +109,7 @@ License
 [`tag`]:                      https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
 [`JSON`]:                     https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON
 [`Segmenter`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
+[`Error`]:                    https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
 
 [`Buffer`]:                   https://nodejs.org/api/buffer.html
 [`ArrayBuffer`]:              https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
