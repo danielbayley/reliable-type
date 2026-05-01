@@ -21,6 +21,7 @@ export const binary = 0b1
 
 export const url    = new URL("https://github.com")
 export const buffer = Buffer.from(string)
+export const arrayBuffer = new ArrayBuffer(8)
 
 const { dirname, filename } = import.meta
 export const readStream  = fs.createReadStream(filename)

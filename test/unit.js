@@ -20,6 +20,7 @@ const {
   binary,
   url,
   buffer,
+  arrayBuffer,
   readStream,
   writeStream,
   uint8Array,
@@ -108,12 +109,13 @@ describe("`type`", () => {
     assert.equal("CustomType", type(taggedObject)))
 
   it("`return`s correct respective `type` for other `Object`s", () => {
-    assert.equal(RegExp,    type(regex))
-    assert.equal(Error,     type(error))
-    assert.equal(Segmenter, type(segmenter))
-    assert.equal(URL,       type(url))
-    assert.equal(Buffer,    type(buffer))
-    assert.equal(Date,      type(date))
+    assert.equal(RegExp,      type(regex))
+    assert.equal(Error,       type(error))
+    assert.equal(Segmenter,   type(segmenter))
+    assert.equal(URL,         type(url))
+    assert.equal(Buffer,      type(buffer))
+    assert.equal(ArrayBuffer, type(arrayBuffer))
+    assert.equal(Date,        type(date))
   })
 
   it("`return`s correct respective `type` for streams", () => {
@@ -195,12 +197,13 @@ describe("`tag`", () => {
     assert.equal("CustomType", tag(taggedObject)))
 
   it("`return`s correct respective `tag` for other `Object`s", () => {
-    assert.equal("RegExp",    tag(regex))
-    assert.equal("Error",     tag(error))
-    assert.equal("Segmenter", tag(segmenter))
-    assert.equal("URL",       tag(url))
-    assert.equal("Buffer",    tag(buffer))
-    assert.equal("Date",      tag(date))
+    assert.equal("RegExp",      tag(regex))
+    assert.equal("Error",       tag(error))
+    assert.equal("Segmenter",   tag(segmenter))
+    assert.equal("URL",         tag(url))
+    assert.equal("Buffer",      tag(buffer))
+    assert.equal("ArrayBuffer", tag(arrayBuffer))
+    assert.equal("Date",        tag(date))
   })
 
   it("`return`s correct respective `tag` for streams", () => {
