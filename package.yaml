@@ -43,7 +43,11 @@ devEngines:
   runtime:
     name: node
     version: *node-version
-packageManager: pnpm@10.14.0
+  packageManager:
+  - name: pnpm
+    version: *pnpm-version
+  - name: npm
+packageManager: pnpm@10.33.2
 
 devDependencies:
   publint: ^0.3.12
