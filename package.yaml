@@ -38,15 +38,11 @@ publishConfig:
 
 engines:
   node: &node-version ">=22"
-  pnpm: &pnpm-version ">=10"
+  pnpm: ">=10"
 devEngines:
   runtime:
     name: node
     version: *node-version
-  packageManager:
-  - name: pnpm
-    version: *pnpm-version
-  - name: npm
 packageManager: pnpm@10.33.2
 
 devDependencies:
@@ -59,7 +55,7 @@ scripts:
   test: node --experimental-test-coverage --test test/unit.js
 
   prerelease: git stash --include-untracked --keep-index && pnpm prepare
-  release: pnpm version --force --no-git-tag-version
+  release: pnpm version --no-git-tag-version
   postrelease: pnpm publish
 
   prepublishOnly: publint
