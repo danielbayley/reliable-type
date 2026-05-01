@@ -21,6 +21,8 @@ export function tag(value) {
   switch (name) {
     case "Number":
       return Number.isNaN(value) ? "NaN" : Number.isFinite(value) ? name : "Infinity"
+
+    case "Error": return Error
     case "Object":
     case "": return isProxy(value) ? "Proxy" : tag.slice(8, -1)
     default: return name
