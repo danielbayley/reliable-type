@@ -4,6 +4,8 @@ export const string = "string"
 export const regex  = RegExp(".*")
 export const symbol = Symbol("*")
 
+export const error = Error("message")
+
 export const segmenter = new Intl.Segmenter()
 export const date = new Date
 
