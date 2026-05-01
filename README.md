@@ -50,6 +50,7 @@ assert.equal(Tag,   tags.GeneratorFunction)
 | `/.*/g`/`new RegExp(".*")`                 | `RegExp`                   | `"RegExp"`                 |
 | `new URL("https://github.com")`            | `URL`                      | `"URL"`                    |
 | `const buffer = Buffer.from("data")`       | [`Buffer`]                 | `"Buffer"`                 |
+| `new ArrayBuffer(1024)                     | [`ArrayBuffer`]            | `"ArrayBuffer"`            |
 | `fs.createReadStream(buffer)`              | [`ReadStream`]             | `"ReadStream"`             |
 | `fs.createWriteStream("/dev/null")`        | [`WriteStream`]            | `"WriteStream"`            |
 | `new Uint8Array([0, 255])`                 | [`Uint8Array`]             | `"Uint8Array"`             |
@@ -109,6 +110,7 @@ License
 [`Segmenter`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 
 [`Buffer`]:                   https://nodejs.org/api/buffer.html
+[`ArrayBuffer`]:              https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 [`ReadStream`]:               https://nodejs.org/api/fs.html#class-fsreadstream
 [`WriteStream`]:              https://nodejs.org/api/fs.html#class-fswritestream
 [`Uint8Array`]:               https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
