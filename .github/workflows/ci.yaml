@@ -8,4 +8,5 @@ jobs:
   CI:
     uses: danielbayley/npm-package-ci/.github/workflows/ci.yaml@main
     with:
-      node-version: 22, 23, 24
+      node-version: 22, 23, 24, 25
+      ignore-scripts: false
