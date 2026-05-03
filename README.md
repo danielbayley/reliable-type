@@ -31,60 +31,70 @@ assert.equal(Type, types.GeneratorFunction)
 assert.equal(Tag,   tags.GeneratorFunction)
 ~~~
 
-| Expression                                 | [`type`][type]             | [`tag`]                    |
-|:-------------------------------------------|:---------------------------|:---------------------------|
-| `undefined`                                | `undefined`                | `"undefined"`              |
-| `null`                                     | `null`                     | `"null"`                   |
-| `true`/`false`                             | `Boolean`                  | `"Boolean"`                |
-| `"string"`                                 | `String`                   | `"String"`                 |
-| `-0`/`1_000`/`0.1`                         | [`Number`]                 | `"Number"`                 | 
-| [`0xAf`]/[`0o1`]/[`0b1`]                   | `Number`                   | `"Number"`                 |
-| [`3.1415e+1`]/[`Math.PI`][`Math`]          | `Number`                   | `"Number"`                 |
-| `1_000_000n`                               | [`BigInt`]                 | `"BigInt"`                 | 
-| [`-`]`Infinity`                            | `Infinity`                 | `"Infinity"`               | 
-| [`NaN`]                                    | `NaN`                      | `"NaN"`                    |
-| [`Math`]                                   | `Math`                     | `"Math"`                   |
-| `Symbol("*")`                              | [`Symbol`]                 | `"Symbol"`                 |
-| `new Intl.Segmenter()`                     | [`Segmenter`]              | `"Segmenter"`              |
-| `new Date()`                               | `Date`                     | `"Date"`                   |
-| `/.*/g`/`new RegExp(".*")`                 | `RegExp`                   | `"RegExp"`                 |
-| `new Error("message")`                     | [`Error`]                  | `"Error"`                  |
-| `new EvalError("message")`                 | [`EvalError`]              | `"EvalError"`              |
-| `new RangeError("message")`                | [`RangeError`]             | `"RangeError"`             |
-| `new ReferenceError("message")`            | [`ReferenceError`]         | `"ReferenceError"`         |
-| `new SyntaxError("message")`               | [`SyntaxError`]            | `"SyntaxError"`            |
-| `new TypeError("message")`                 | [`TypeError`]              | `"TypeError"`              |
-| `new URIError("message")`                  | [`URIError`]               | `"URIError"`               |
-| `new AggregateError("message")`            | [`AggregateError`]         | `"AggregateError"`         |
-| `new URL("https://github.com")`            | `URL`                      | `"URL"`                    |
-| `const buffer = Buffer.from("data")`       | [`Buffer`]                 | `"Buffer"`                 |
-| `new ArrayBuffer(1024)                     | [`ArrayBuffer`]            | `"ArrayBuffer"`            |
-| `fs.createReadStream(buffer)`              | [`ReadStream`]             | `"ReadStream"`             |
-| `fs.createWriteStream("/dev/null")`        | [`WriteStream`]            | `"WriteStream"`            |
-| `new Uint8Array([0, 255])`                 | [`Uint8Array`]             | `"Uint8Array"`             |
-| `[1 ,2 ,3]`/`Array.from("abc")`            | `Array`                    | `"Array"`                  |
-| `new Set([1, 2, 3])`                       | [`Set`]                    | `"Set"`                    |
-| `new WeakSet()`                            | [`WeakSet`]                | `"WeakSet"`                |
-| `new WeakMap()`                            | [`WeakMap`]                | `"WeakMap"`                |
-| `const map = new Map().set("a", 1)`        | [`Map`]                    | `"Map"`                    |
-| `map.entries()`                            | [`Iterator`]               | `"Iterator"`               |
-| `const object = { a: 1, b: 2 }`            | `Object`                   | `"Object"`                 |
-| `new Proxy(object, {})`                    | [`Proxy`]                  | `"Proxy"`                  |
-| `Proxy.revocable(object, {})`              | `Proxy`                    | `"Proxy"`                  |
-| `{ [Symbol.toStringTag]: "tag" }`          | `"tag"`                    | [`"tag"`][`tag`]           |
-| [`JSON`]                                   | `JSON`                     | `"JSON"`                   |
-| `function() { return arguments }(1, 2)`    | [`Arguments`]              | `"Arguments"`              |
-| `[].reduce`/`() => {}`                     | `Function`                 | `"Function"`               |
-| `async () => Promise.resolve(true)`        | [`AsyncFunction`]          | `"AsyncFunction"`          |
-| `Promise.resolve(true)`                    | [`Promise`]                | `"Promise"`                |
-| `function* generator() { yield * [1, 2] }` | [`GeneratorFunction`]      | `"GeneratorFunction"`      |
-| `generator()`                              | [`Generator`]              | `"Generator"`              |
-| `async function* gen() { yield * [1, 2] }` | [`AsyncGeneratorFunction`] | `"AsyncGeneratorFunction"` |
-| `gen()`                                    | [`AsyncGenerator`]         | `"AsyncGenerator"`         |
-| `new (class Class {})()`                   | `Class`                    | [`"Class"`]                |
-| `new (class Extended extends Class {})()`  | `ExtendedClass`            | [`"ExtendedClass"`]        |
-| `fs.opendir(dir)`                          | [`Dir`]                    | `"Dir"`                    |
-| `fs.readdir(dir, { withFileTypes: true })` | [`Dirent`]                 | `"Dirent"`                 |
+| Expression                                  | [`type`][type]             | [`tag`]                    |
+|:--------------------------------------------|:---------------------------|:---------------------------|
+| `undefined`                                 | `undefined`                | `"undefined"`              |
+| `null`                                      | `null`                     | `"null"`                   |
+| `true`/`false`                              | `Boolean`                  | `"Boolean"`                |
+| `"string"`                                  | `String`                   | `"String"`                 |
+| `-0`/`1_000`/`0.1`                          | [`Number`]                 | `"Number"`                 | 
+| [`0xAf`]/[`0o1`]/[`0b1`]                    | `Number`                   | `"Number"`                 |
+| [`3.1415e+1`]/[`Math.PI`][`Math`]           | `Number`                   | `"Number"`                 |
+| `2n^63n`                                    | [`BigInt`]                 | `"BigInt"`                 | 
+| [`-`]`Infinity`                             | `Infinity`                 | `"Infinity"`               | 
+| [`NaN`]                                     | `NaN`                      | `"NaN"`                    |
+| [`Math`]                                    | `Math`                     | `"Math"`                   |
+| `Symbol("*")`                               | [`Symbol`]                 | `"Symbol"`                 |
+| `/.*/g`/`new RegExp(".*")`                  | `RegExp`                   | `"RegExp"`                 |
+| `new Error("message")`                      | [`Error`]                  | `"Error"`                  |
+| `new EvalError("message")`                  | [`EvalError`]              | `"EvalError"`              |
+| `new RangeError("message")`                 | [`RangeError`]             | `"RangeError"`             |
+| `new ReferenceError("message")`             | [`ReferenceError`]         | `"ReferenceError"`         |
+| `new SyntaxError("message")`                | [`SyntaxError`]            | `"SyntaxError"`            |
+| `new TypeError("message")`                  | [`TypeError`]              | `"TypeError"`              |
+| `new URIError("message")`                   | [`URIError`]               | `"URIError"`               |
+| `new AggregateError("message")`             | [`AggregateError`]         | `"AggregateError"`         |
+| `new Intl.Segmenter()`                      | [`Segmenter`]              | `"Segmenter"`              |
+| `new Date()`                                | [`Date`]                   | `"Date"`                   |
+| `new URL("https://github.com")`             | `URL`                      | `"URL"`                    |
+| `fs.createReadStream(buffer)`               | [`ReadStream`]             | `"ReadStream"`             |
+| `fs.createWriteStream("/dev/null")`         | [`WriteStream`]            | `"WriteStream"`            |
+| `const buffer = Buffer.from("data")`        | [`Buffer`]                 | `"Buffer"`                 |
+| `new ArrayBuffer(1024)`                     | [`ArrayBuffer`]            | `"ArrayBuffer"`            |
+| `new Int8Array([-128, 127])                 | [`Int8Array`]              | `"Int8Array"`              |
+| `new Uint8Array([0, 255])`                  | [`Uint8Array`]             | `"Uint8Array"`             |
+| `new new Uint8ClampedArray([0, 255])`       | [`Uint8ClampedArray`]      | `"Uint8ClampedArray"`      |
+| `new Int16Array([-32768, 32767])`           | [`Int16Array`]             | `"Int16Array"`             |
+| `new Uint16Array([0, 65535])`               | [`Uint16Array`]            | `"Uint16Array"`            |
+| `new Int32Array([-2147483648, 2147483647])` | [`Int32Array`]             | `"Int32Array"`             |
+| `new Uint32Array([0, 4294967295])`          | [`Uint32Array`]            | `"Uint32Array"`            |
+| `new Float32Array([-3.4e38,  3.4e38])`      | [`Float32Array`]           | `"Float32Array"`           |
+| `new Float64Array([-1.8e308, 1.8e308])`     | [`Float64Array`]           | `"Float64Array"`           |
+| `new BigInt64Array([-2n^63n, 2n^63n])`      | [`BigInt64Array`]          | `"BigInt64Array"`          |
+| `new BigUint64Array([0n, 2n^63n])`          | [`BigUint64Array`]         | `"BigUint64Array"`         |
+| `[1 ,2 ,3]`/`Array.from("abc")`             | `Array`                    | `"Array"`                  |
+| `new Set([1, 2, 3])`                        | [`Set`]                    | `"Set"`                    |
+| `new WeakSet()`                             | [`WeakSet`]                | `"WeakSet"`                |
+| `new WeakMap()`                             | [`WeakMap`]                | `"WeakMap"`                |
+| `const map = new Map().set("a", 1)`         | [`Map`]                    | `"Map"`                    |
+| `map.entries()`                             | [`Iterator`]               | `"Iterator"`               |
+| `const object = { a: 1, b: 2 }`             | `Object`                   | `"Object"`                 |
+| `new Proxy(object, {})`                     | [`Proxy`]                  | `"Proxy"`                  |
+| `Proxy.revocable(object, {})`               | `Proxy`                    | `"Proxy"`                  |
+| `{ [Symbol.toStringTag]: "tag" }`           | `"tag"`                    | [`"tag"`][`tag`]           |
+| [`JSON`]                                    | `JSON`                     | `"JSON"`                   |
+| `function() { return arguments }(1, 2)`     | [`Arguments`]              | `"Arguments"`              |
+| `[].reduce`/`() => {}`                      | `Function`                 | `"Function"`               |
+| `async () => Promise.resolve(true)`         | [`AsyncFunction`]          | `"AsyncFunction"`          |
+| `Promise.resolve(true)`                     | [`Promise`]                | `"Promise"`                |
+| `function* generator() { yield * [1, 2] }`  | [`GeneratorFunction`]      | `"GeneratorFunction"`      |
+| `generator()`                               | [`Generator`]              | `"Generator"`              |
+| `async function* gen() { yield * [1, 2] }`  | [`AsyncGeneratorFunction`] | `"AsyncGeneratorFunction"` |
+| `gen()`                                     | [`AsyncGenerator`]         | `"AsyncGenerator"`         |
+| `new (class Class {})()`                    | `Class`                    | [`"Class"`]                |
+| `new (class Extended extends Class {})()`   | `ExtendedClass`            | [`"ExtendedClass"`]        |
+| `fs.opendir(dir)`                           | [`Dir`]                    | `"Dir"`                    |
+| `fs.readdir(dir, { withFileTypes: true })`  | [`Dirent`]                 | `"Dirent"`                 |
 
 ### Aliases
 ~~~ js
@@ -126,12 +136,25 @@ License
 [`AggregateError`]:           https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AggregateError
 
 [`Segmenter`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
+[`Date`]:                     https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+[`ReadStream`]:               https://nodejs.org/api/fs.html#class-fsreadstream
+[`WriteStream`]:              https://nodejs.org/api/fs.html#class-fswritestream
 
 [`Buffer`]:                   https://nodejs.org/api/buffer.html
 [`ArrayBuffer`]:              https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
-[`ReadStream`]:               https://nodejs.org/api/fs.html#class-fsreadstream
-[`WriteStream`]:              https://nodejs.org/api/fs.html#class-fswritestream
+[`Int8Array`]:                https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Int8Array
 [`Uint8Array`]:               https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array
+[`Uint8ClampedArray`]:        https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray
+[`Int16Array`]:               https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Int16Array
+[`Uint16Array`]:              https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array
+[`Int32Array`]:               https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Int32Array
+[`Uint32Array`]:              https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array
+[`Float32Array`]:             https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
+[`Float64Array`]:             https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Float64Array
+[`BigInt64Array`]:            https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/BigInt64Array
+[`BigUint64Array`]:           https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array
+
 [`Set`]:                      https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
 [`WeakSet`]:                  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
 [`WeakMap`]:                  https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
