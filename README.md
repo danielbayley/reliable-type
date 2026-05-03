@@ -31,6 +31,8 @@ assert.equal(Type, types.GeneratorFunction)
 assert.equal(Tag,   tags.GeneratorFunction)
 ~~~
 
+[Type]s
+---------------------------------------------------------------------------------------------------------
 | Expression                                  | [`type`][type]             | [`tag`]                    |
 |:--------------------------------------------|:---------------------------|:---------------------------|
 | `undefined`                                 | `undefined`                | `"undefined"`              |
