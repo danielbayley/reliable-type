@@ -5,14 +5,14 @@ export const regex  = RegExp(".*")
 export const symbol = Symbol("*")
 
 // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error#error_types
-export const error = Error(string)
-export const evalError = EvalError(string)
-export const rangeError = RangeError(string)
-export const referenceError = ReferenceError(string)
-export const syntaxError = SyntaxError(string)
-export const typeError = TypeError(string)
-export const uriError = URIError(string)
-export const aggregateError = AggregateError(string)
+export const error          = new Error(string)
+export const evalError      = new EvalError(string)
+export const rangeError     = new RangeError(string)
+export const referenceError = new ReferenceError(string)
+export const syntaxError    = new SyntaxError(string)
+export const typeError      = new TypeError(string)
+export const uriError       = new URIError(string)
+export const aggregateError = new AggregateError([error])
 
 export const segmenter = new Intl.Segmenter()
 export const date = new Date
@@ -20,7 +20,7 @@ export const date = new Date
 export const integer     = 1
 export const negative    = -1
 export const decimal     = 1.0
-export const bigint      = 2n^63n
+export const bigint      = 2n ** 63n
 export const exponential = 3.4e38
 
 export const hex    = 0xAf
