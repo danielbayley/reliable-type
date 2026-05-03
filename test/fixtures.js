@@ -4,7 +4,15 @@ export const string = "string"
 export const regex  = RegExp(".*")
 export const symbol = Symbol("*")
 
-export const error = Error("message")
+// https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error#error_types
+export const error = Error(string)
+export const evalError = EvalError(string)
+export const rangeError = RangeError(string)
+export const referenceError = ReferenceError(string)
+export const syntaxError = SyntaxError(string)
+export const typeError = TypeError(string)
+export const uriError = URIError(string)
+export const aggregateError = AggregateError(string)
 
 export const segmenter = new Intl.Segmenter()
 export const date = new Date
