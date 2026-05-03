@@ -48,7 +48,7 @@ packageManager: pnpm@10.33.2
 
 devDependencies:
   publint: ^0.3.18
-  yaml: ^2.8.3
+  yaml: ^2.8.4
 
 scripts:
   prepare: yaml --single --json --indent ${TABSIZE:-2} < package.yaml > package.json
