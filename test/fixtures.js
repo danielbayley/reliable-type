@@ -6,13 +6,13 @@ export const symbol = Symbol("*")
 
 // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error#error_types
 export const error          = new Error(string)
-export const evalError      = new EvalError(string)
-export const rangeError     = new RangeError(string)
-export const referenceError = new ReferenceError(string)
-export const syntaxError    = new SyntaxError(string)
-export const typeError      = new TypeError(string)
-export const uriError       = new URIError(string)
-export const aggregateError = new AggregateError([error])
+export const evalError      = new EvalError(error.message)
+export const rangeError     = new RangeError(error.message)
+export const referenceError = new ReferenceError(error.message)
+export const syntaxError    = new SyntaxError(error.message)
+export const typeError      = new TypeError(error.message)
+export const uriError       = new URIError(error.message)
+export const aggregateError = new AggregateError([error], error.message)
 
 export const segmenter = new Intl.Segmenter()
 export const date      = new Date
