@@ -29,6 +29,7 @@ exports:
   .: &index ./index.js
   ./types: *types
   ./utils: *utils
+  ./fixtures: *fixtures
 files:
 - *index
 - *types
