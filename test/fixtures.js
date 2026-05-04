@@ -1,7 +1,7 @@
 import fs, {promises} from "node:fs"
 
 export const string = "string"
-export const regex  = RegExp(".*")
+export const regexp = new RegExp(".*")
 export const symbol = Symbol("*")
 
 // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error#error_types
@@ -15,7 +15,7 @@ export const uriError       = new URIError(string)
 export const aggregateError = new AggregateError([error])
 
 export const segmenter = new Intl.Segmenter()
-export const date = new Date
+export const date      = new Date
 
 export const integer     = 1
 export const negative    = -1

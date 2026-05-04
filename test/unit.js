@@ -5,7 +5,7 @@ import * as fixtures from "#fixtures"
 
 const {
   string,
-  regex,
+  regexp,
   symbol,
   error,
   evalError,
@@ -125,7 +125,7 @@ describe("`type`", () => {
 
   it("`return`s correct respective `type` for other `Object`s", () => {
     assert.equal(Date,              type(date))
-    assert.equal(RegExp,            type(regex))
+    assert.equal(RegExp,            type(regexp))
     assert.equal(Error,             type(error))
     assert.equal(EvalError,         type(evalError))
     assert.equal(RangeError,        type(rangeError))
@@ -230,7 +230,7 @@ describe("`tag`", () => {
 
   it("`return`s correct respective `tag` for other `Object`s", () => {
     assert.equal("Date",              tag(date))
-    assert.equal("RegExp",            tag(regex))
+    assert.equal("RegExp",            tag(regexp))
     assert.equal("Error",             tag(error))
     assert.equal("EvalError",         tag(evalError))
     assert.equal("RangeError",        tag(rangeError))
