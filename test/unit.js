@@ -8,13 +8,7 @@ const {
   regexp,
   symbol,
   error,
-  evalError,
-  rangeError,
-  referenceError,
-  syntaxError,
-  typeError,
-  uriError,
-  aggregateError,
+  errors,
   segmenter,
   date,
   integer,
@@ -29,18 +23,7 @@ const {
   readStream,
   writeStream,
   buffer,
-  arrayBuffer,
-  int8Array,
-  uint8Array,
-  uint8ClampedArray,
-  int16Array,
-  uint16Array,
-  int32Array,
-  uint32Array,
-  float32Array,
-  float64Array,
-  bigInt64Array,
-  bigUint64Array,
+  arrays,
   array,
   set,
   weakSet,
@@ -103,17 +86,17 @@ describe("`type`", () => {
   })
 
   it("`return`s correct respective `type` for `Object`s", () => {
-    assert.equal(Array,      type([]))
-    assert.equal(Array,      type(array))
-    assert.equal(Set,        type(set))
-    assert.equal(WeakSet,    type(weakSet))
-    assert.equal(WeakMap,    type(weakMap))
-    assert.equal(Map,        type(map))
-    assert.equal(Iterator,   type(iterator))
-    assert.equal(Object,     type(object))
-    assert.equal(Object,     type({}))
-    assert.equal(Proxy,      type(proxy))
-    assert.equal(Proxy,      type(proxyRevocable))
+    assert.equal(Array,     type([]))
+    assert.equal(Array,     type(array))
+    assert.equal(Set,       type(set))
+    assert.equal(WeakSet,   type(weakSet))
+    assert.equal(WeakMap,   type(weakMap))
+    assert.equal(Map,       type(map))
+    assert.equal(Iterator,  type(iterator))
+    assert.equal(Object,    type(object))
+    assert.equal(Object,    type({}))
+    assert.equal(Proxy,     type(proxy))
+    assert.equal(Proxy,     type(proxyRevocable))
   })
 
   it("`return`s raw name of built-in globals", () => {
@@ -127,28 +110,28 @@ describe("`type`", () => {
     assert.equal(Date,              type(date))
     assert.equal(RegExp,            type(regexp))
     assert.equal(Error,             type(error))
-    assert.equal(EvalError,         type(evalError))
-    assert.equal(RangeError,        type(rangeError))
-    assert.equal(ReferenceError,    type(referenceError))
-    assert.equal(SyntaxError,       type(syntaxError))
-    assert.equal(TypeError,         type(typeError))
-    assert.equal(URIError,          type(uriError))
-    assert.equal(AggregateError,    type(aggregateError))
+    assert.equal(EvalError,         type(errors.eval))
+    assert.equal(RangeError,        type(errors.range))
+    assert.equal(ReferenceError,    type(errors.reference))
+    assert.equal(SyntaxError,       type(errors.syntax))
+    assert.equal(TypeError,         type(errors.type))
+    assert.equal(URIError,          type(errors.uri))
+    assert.equal(AggregateError,    type(errors.aggregate))
     assert.equal(Segmenter,         type(segmenter))
     assert.equal(URL,               type(url))
     assert.equal(Buffer,            type(buffer))
-    assert.equal(ArrayBuffer,       type(arrayBuffer))
-    assert.equal(Int8Array,         type(int8Array))
-    assert.equal(Uint8Array,        type(uint8Array))
-    assert.equal(Uint8ClampedArray, type(uint8ClampedArray))
-    assert.equal(Int16Array,        type(int16Array))
-    assert.equal(Uint16Array,       type(uint16Array))
-    assert.equal(Int32Array,        type(int32Array))
-    assert.equal(Uint32Array,       type(uint32Array))
-    assert.equal(Float32Array,      type(float32Array))
-    assert.equal(Float64Array,      type(float64Array))
-    assert.equal(BigInt64Array,     type(bigInt64Array))
-    assert.equal(BigUint64Array,    type(bigUint64Array))
+    assert.equal(ArrayBuffer,       type(arrays.buffer))
+    assert.equal(Int8Array,         type(arrays.typed.int8))
+    assert.equal(Uint8Array,        type(arrays.typed.uint8))
+    assert.equal(Uint8ClampedArray, type(arrays.typed.uint8Clamped))
+    assert.equal(Int16Array,        type(arrays.typed.int16))
+    assert.equal(Uint16Array,       type(arrays.typed.uint16))
+    assert.equal(Int32Array,        type(arrays.typed.int32))
+    assert.equal(Uint32Array,       type(arrays.typed.uint32))
+    assert.equal(Float32Array,      type(arrays.typed.float32))
+    assert.equal(Float64Array,      type(arrays.typed.float64))
+    assert.equal(BigInt64Array,     type(arrays.typed.bigInt64))
+    assert.equal(BigUint64Array,    type(arrays.typed.bigUint64))
   })
 
   it("`return`s correct respective `type` for streams", () => {
@@ -232,28 +215,28 @@ describe("`tag`", () => {
     assert.equal("Date",              tag(date))
     assert.equal("RegExp",            tag(regexp))
     assert.equal("Error",             tag(error))
-    assert.equal("EvalError",         tag(evalError))
-    assert.equal("RangeError",        tag(rangeError))
-    assert.equal("ReferenceError",    tag(referenceError))
-    assert.equal("SyntaxError",       tag(syntaxError))
-    assert.equal("TypeError",         tag(typeError))
-    assert.equal("URIError",          tag(uriError))
-    assert.equal("AggregateError",    tag(aggregateError))
+    assert.equal("EvalError",         tag(errors.eval))
+    assert.equal("RangeError",        tag(errors.range))
+    assert.equal("ReferenceError",    tag(errors.reference))
+    assert.equal("SyntaxError",       tag(errors.syntax))
+    assert.equal("TypeError",         tag(errors.type))
+    assert.equal("URIError",          tag(errors.uri))
+    assert.equal("AggregateError",    tag(errors.aggregate))
     assert.equal("Segmenter",         tag(segmenter))
     assert.equal("URL",               tag(url))
     assert.equal("Buffer",            tag(buffer))
-    assert.equal("ArrayBuffer",       tag(arrayBuffer))
-    assert.equal("Int8Array",         tag(int8Array))
-    assert.equal("Uint8Array",        tag(uint8Array))
-    assert.equal("Uint8ClampedArray", tag(uint8ClampedArray))
-    assert.equal("Int16Array",        tag(int16Array))
-    assert.equal("Uint16Array",       tag(uint16Array))
-    assert.equal("Int32Array",        tag(int32Array))
-    assert.equal("Uint32Array",       tag(uint32Array))
-    assert.equal("Float32Array",      tag(float32Array))
-    assert.equal("Float64Array",      tag(float64Array))
-    assert.equal("BigInt64Array",     tag(bigInt64Array))
-    assert.equal("BigUint64Array",    tag(bigUint64Array))
+    assert.equal("ArrayBuffer",       tag(arrays.buffer))
+    assert.equal("Int8Array",         tag(arrays.typed.int8))
+    assert.equal("Uint8Array",        tag(arrays.typed.uint8))
+    assert.equal("Uint8ClampedArray", tag(arrays.typed.uint8Clamped))
+    assert.equal("Int16Array",        tag(arrays.typed.int16))
+    assert.equal("Uint16Array",       tag(arrays.typed.uint16))
+    assert.equal("Int32Array",        tag(arrays.typed.int32))
+    assert.equal("Uint32Array",       tag(arrays.typed.uint32))
+    assert.equal("Float32Array",      tag(arrays.typed.float32))
+    assert.equal("Float64Array",      tag(arrays.typed.float64))
+    assert.equal("BigInt64Array",     tag(arrays.typed.bigInt64))
+    assert.equal("BigUint64Array",    tag(arrays.typed.bigUint64))
   })
 
   it("`return`s correct respective `tag` for streams", () => {

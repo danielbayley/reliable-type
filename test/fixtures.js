@@ -5,14 +5,16 @@ export const regexp = new RegExp(".*")
 export const symbol = Symbol("*")
 
 // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error#error_types
-export const error          = new Error(string)
-export const evalError      = new EvalError(error.message)
-export const rangeError     = new RangeError(error.message)
-export const referenceError = new ReferenceError(error.message)
-export const syntaxError    = new SyntaxError(error.message)
-export const typeError      = new TypeError(error.message)
-export const uriError       = new URIError(error.message)
-export const aggregateError = new AggregateError([error], error.message)
+export const error  = new Error(string)
+export const errors = {
+  eval:      new EvalError(error.message),
+  range:     new RangeError(error.message),
+  reference: new ReferenceError(error.message),
+  syntax:    new SyntaxError(error.message),
+  type:      new TypeError(error.message),
+  uri:       new URIError(error.message),
+  aggregate: new AggregateError([error], error.message),
+}
 
 export const segmenter = new Intl.Segmenter()
 export const date      = new Date
@@ -33,22 +35,24 @@ const { dirname, filename } = import.meta
 export const readStream  = fs.createReadStream(filename)
 export const writeStream = fs.createWriteStream("/dev/null")
 
+export const array  = Array.from(string)
+export const arrays = {}
 export const buffer = Buffer.from(string)
-export const arrayBuffer       = new ArrayBuffer(1024)
+arrays.buffer = new ArrayBuffer(1024)
 // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray#typedarray_objects
-export const int8Array         = new Int8Array([-128, 127])
-export const uint8Array        = new Uint8Array([0, 255])
-export const uint8ClampedArray = new Uint8ClampedArray([0, 255])
-export const int16Array        = new Int16Array([-32768, 32767])
-export const uint16Array       = new Uint16Array([0, 65535])
-export const int32Array        = new Int32Array([-2147483648, 2147483647])
-export const uint32Array       = new Uint32Array([0, 4294967295])
-export const float32Array      = new Float32Array([-exponential, exponential])
-export const float64Array      = new Float64Array([-1.8e308, 1.8e308])
-export const bigInt64Array     = new BigInt64Array([-bigint, bigint])
-export const bigUint64Array    = new BigUint64Array([0n, bigint])
-
-export const array = Array.from(string)
+arrays.typed = {
+  int8:         new Int8Array([-128, 127]),
+  uint8:        new Uint8Array([0, 255]),
+  uint8Clamped: new Uint8ClampedArray([0, 255]),
+  int16:        new Int16Array([-32768, 32767]),
+  uint16:       new Uint16Array([0, 65535]),
+  int32:        new Int32Array([-2147483648, 2147483647]),
+  uint32:       new Uint32Array([0, 4294967295]),
+  float32:      new Float32Array([-exponential, exponential]),
+  float64:      new Float64Array([-1.8e308, 1.8e308]),
+  bigInt64:     new BigInt64Array([-bigint, bigint]),
+  bigUint64:    new BigUint64Array([0n, bigint]),
+}
 
 export const set     = new Set(array)
 export const weakSet = new WeakSet()
